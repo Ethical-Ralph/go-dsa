@@ -48,11 +48,15 @@ func (ht *HashTable) Put(key, value string) {
 	}
 
 	ht.buckets[hash] = append(ht.buckets[hash], kv)
-	ht.length++
 
-	if ht.length == ht.cap {
+	ht.length++
+	if ht.loadFactor() > 0.5 {
 		ht.resize()
 	}
+}
+
+func (ht *HashTable) loadFactor() float32 {
+	return float32(ht.length) / float32(len(ht.buckets))
 }
 
 func (ht *HashTable) resize() {
