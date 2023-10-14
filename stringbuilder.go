@@ -16,7 +16,7 @@ func NewStringBuilder() *StringBuilder {
 }
 
 func (sb *StringBuilder) Append(str string) {
-	if sb.size == sb.size {
+	if sb.size == sb.cap {
 		sb.resize()
 	}
 
