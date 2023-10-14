@@ -56,4 +56,8 @@ func main() {
 	for _, val := range al.GetAll() {
 		fmt.Println(val)
 	}
+
+	str := "obrgcs"
+
+	fmt.Println("Is unique", IsUnique(str))
 }
